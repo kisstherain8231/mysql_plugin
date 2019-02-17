@@ -32,9 +32,9 @@ class Spartan_data
   private:
     File data_file;
     int header_size;
-    int recored_header_size;
+    int record_header_size;
     bool crashed;
-    int number_recoreds;
+    int number_records;
     int number_del_records;
     int read_header();
     int write_header();
