@@ -1,3 +1,9 @@
 !*.cc
 !*.h
 !CMakeLists.txt
+*.so
+CMakeFiles
+CMakeCache.txt
+.DS_Store
+*.cmake
+
