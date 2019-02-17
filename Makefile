@@ -113,16 +113,16 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target package_source
-package_source:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
-	cd /Users/mac/Documents/iSource/mysql-5.6.42 && /usr/local/Cellar/cmake/3.13.2/bin/cpack --config ./CPackSourceConfig.cmake /Users/mac/Documents/iSource/mysql-5.6.42/CPackSourceConfig.cmake
-.PHONY : package_source
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/local/Cellar/cmake/3.13.2/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
 
-# Special rule for the target package_source
-package_source/fast: package_source
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
 
-.PHONY : package_source/fast
+.PHONY : edit_cache/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -135,16 +135,16 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/local/Cellar/cmake/3.13.2/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
+# Special rule for the target package_source
+package_source:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Run CPack packaging tool for source..."
+	cd /Users/mac/Documents/iSource/mysql-5.6.42 && /usr/local/Cellar/cmake/3.13.2/bin/cpack --config ./CPackSourceConfig.cmake /Users/mac/Documents/iSource/mysql-5.6.42/CPackSourceConfig.cmake
+.PHONY : package_source
 
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
+# Special rule for the target package_source
+package_source/fast: package_source
 
-.PHONY : edit_cache/fast
+.PHONY : package_source/fast
 
 # Special rule for the target package
 package: preinstall
@@ -159,14 +159,14 @@ package/fast: package
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/mac/Documents/iSource/mysql-5.6.42 && $(CMAKE_COMMAND) -E cmake_progress_start /Users/mac/Documents/iSource/mysql-5.6.42/CMakeFiles /Users/mac/Documents/iSource/mysql-5.6.42/storage/example/CMakeFiles/progress.marks
-	cd /Users/mac/Documents/iSource/mysql-5.6.42 && $(MAKE) -f CMakeFiles/Makefile2 storage/example/all
+	cd /Users/mac/Documents/iSource/mysql-5.6.42 && $(CMAKE_COMMAND) -E cmake_progress_start /Users/mac/Documents/iSource/mysql-5.6.42/CMakeFiles /Users/mac/Documents/iSource/mysql-5.6.42/storage/spartan/CMakeFiles/progress.marks
+	cd /Users/mac/Documents/iSource/mysql-5.6.42 && $(MAKE) -f CMakeFiles/Makefile2 storage/spartan/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/mac/Documents/iSource/mysql-5.6.42/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/mac/Documents/iSource/mysql-5.6.42 && $(MAKE) -f CMakeFiles/Makefile2 storage/example/clean
+	cd /Users/mac/Documents/iSource/mysql-5.6.42 && $(MAKE) -f CMakeFiles/Makefile2 storage/spartan/clean
 .PHONY : clean
 
 # The main clean target
@@ -176,18 +176,87 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/mac/Documents/iSource/mysql-5.6.42 && $(MAKE) -f CMakeFiles/Makefile2 storage/example/preinstall
+	cd /Users/mac/Documents/iSource/mysql-5.6.42 && $(MAKE) -f CMakeFiles/Makefile2 storage/spartan/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/mac/Documents/iSource/mysql-5.6.42 && $(MAKE) -f CMakeFiles/Makefile2 storage/example/preinstall
+	cd /Users/mac/Documents/iSource/mysql-5.6.42 && $(MAKE) -f CMakeFiles/Makefile2 storage/spartan/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
 	cd /Users/mac/Documents/iSource/mysql-5.6.42 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+# Convenience name for target.
+storage/spartan/CMakeFiles/spartan.dir/rule:
+	cd /Users/mac/Documents/iSource/mysql-5.6.42 && $(MAKE) -f CMakeFiles/Makefile2 storage/spartan/CMakeFiles/spartan.dir/rule
+.PHONY : storage/spartan/CMakeFiles/spartan.dir/rule
+
+# Convenience name for target.
+spartan: storage/spartan/CMakeFiles/spartan.dir/rule
+
+.PHONY : spartan
+
+# fast build rule for target.
+spartan/fast:
+	cd /Users/mac/Documents/iSource/mysql-5.6.42 && $(MAKE) -f storage/spartan/CMakeFiles/spartan.dir/build.make storage/spartan/CMakeFiles/spartan.dir/build
+.PHONY : spartan/fast
+
+ha_spartan.o: ha_spartan.cc.o
+
+.PHONY : ha_spartan.o
+
+# target to build an object file
+ha_spartan.cc.o:
+	cd /Users/mac/Documents/iSource/mysql-5.6.42 && $(MAKE) -f storage/spartan/CMakeFiles/spartan.dir/build.make storage/spartan/CMakeFiles/spartan.dir/ha_spartan.cc.o
+.PHONY : ha_spartan.cc.o
+
+ha_spartan.i: ha_spartan.cc.i
+
+.PHONY : ha_spartan.i
+
+# target to preprocess a source file
+ha_spartan.cc.i:
+	cd /Users/mac/Documents/iSource/mysql-5.6.42 && $(MAKE) -f storage/spartan/CMakeFiles/spartan.dir/build.make storage/spartan/CMakeFiles/spartan.dir/ha_spartan.cc.i
+.PHONY : ha_spartan.cc.i
+
+ha_spartan.s: ha_spartan.cc.s
+
+.PHONY : ha_spartan.s
+
+# target to generate assembly for a file
+ha_spartan.cc.s:
+	cd /Users/mac/Documents/iSource/mysql-5.6.42 && $(MAKE) -f storage/spartan/CMakeFiles/spartan.dir/build.make storage/spartan/CMakeFiles/spartan.dir/ha_spartan.cc.s
+.PHONY : ha_spartan.cc.s
+
+spartan_data.o: spartan_data.cc.o
+
+.PHONY : spartan_data.o
+
+# target to build an object file
+spartan_data.cc.o:
+	cd /Users/mac/Documents/iSource/mysql-5.6.42 && $(MAKE) -f storage/spartan/CMakeFiles/spartan.dir/build.make storage/spartan/CMakeFiles/spartan.dir/spartan_data.cc.o
+.PHONY : spartan_data.cc.o
+
+spartan_data.i: spartan_data.cc.i
+
+.PHONY : spartan_data.i
+
+# target to preprocess a source file
+spartan_data.cc.i:
+	cd /Users/mac/Documents/iSource/mysql-5.6.42 && $(MAKE) -f storage/spartan/CMakeFiles/spartan.dir/build.make storage/spartan/CMakeFiles/spartan.dir/spartan_data.cc.i
+.PHONY : spartan_data.cc.i
+
+spartan_data.s: spartan_data.cc.s
+
+.PHONY : spartan_data.s
+
+# target to generate assembly for a file
+spartan_data.cc.s:
+	cd /Users/mac/Documents/iSource/mysql-5.6.42 && $(MAKE) -f storage/spartan/CMakeFiles/spartan.dir/build.make storage/spartan/CMakeFiles/spartan.dir/spartan_data.cc.s
+.PHONY : spartan_data.cc.s
 
 # Help Target
 help:
@@ -199,11 +268,18 @@ help:
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... install/local"
+	@echo "... spartan"
 	@echo "... test"
-	@echo "... package_source"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... rebuild_cache"
+	@echo "... package_source"
 	@echo "... package"
+	@echo "... ha_spartan.o"
+	@echo "... ha_spartan.i"
+	@echo "... ha_spartan.s"
+	@echo "... spartan_data.o"
+	@echo "... spartan_data.i"
+	@echo "... spartan_data.s"
 .PHONY : help
 
 

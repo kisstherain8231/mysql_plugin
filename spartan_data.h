@@ -1,16 +1,9 @@
-/**
-Spartan_data.h
-
-*/
-
-
-#include "my_global.h"
+#include "my_global.h" 
 #include "my_sys.h"
-
 
 class Spartan_data
 {
-  public:
+public:
     Spartan_data(void);
     ~Spartan_data(void);
     int create_table(char * path);
@@ -24,12 +17,10 @@ class Spartan_data
     long long cur_position();
     int records();
     int del_records();
-    int recoreds();
-    int del_records();
-    int trunc_tables();
+    int trunc_table();
     int row_size(int length);
     
-  private:
+private:
     File data_file;
     int header_size;
     int record_header_size;
@@ -38,4 +29,4 @@ class Spartan_data
     int number_del_records;
     int read_header();
     int write_header();
-}
+};
